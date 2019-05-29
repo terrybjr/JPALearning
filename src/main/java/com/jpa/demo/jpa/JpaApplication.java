@@ -3,8 +3,6 @@ package com.jpa.demo.jpa;
 import java.text.NumberFormat;
 import java.util.List;
 
-import javax.swing.text.NumberFormatter;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -19,10 +17,11 @@ import com.jpa.demo.jpa.repository.EmployeeRepo;
 public class JpaApplication implements CommandLineRunner {
 	@Autowired
 	private EmployeeRepo employeeRepo;
+
 	public static void main(String[] args) {
 		SpringApplication.run(JpaApplication.class, args);
 	}
-	
+
 	@Override
 	public void run(String... args) throws Exception {
 		Salaried s1 = new Salaried("Brian", 40000);
@@ -40,11 +39,9 @@ public class JpaApplication implements CommandLineRunner {
 			System.out.println("Paying " + employee.getName() + " : " + formatter.format(employee.pay()) + "\n");
 		}
 		// in lambda form
-		employees.stream().forEach(e -> System.out.println("Paying " + e.getName() + " : " 
-				+ NumberFormat.getCurrencyInstance().format(e.pay()) + "\n"));
-		
-		
-		
+		employees.stream().forEach(e -> System.out
+				.println("Paying " + e.getName() + " : " + NumberFormat.getCurrencyInstance().format(e.pay()) + "\n"));
+
 	}
 
 }
